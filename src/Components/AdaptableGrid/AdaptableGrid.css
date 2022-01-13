@@ -1,0 +1,31 @@
+.AdaptableGrid {
+    display: block;
+    
+}
+
+.AdaptableGrid-card-container {
+    cursor: url(https://emoji.gg/assets/emoji/2355_ultra_ball_pokemon.png),auto;
+    border: 10px solid transparent;
+    border-image: url(https://isurojit.github.io/pokemondatabase/static/media/border-img.4120e392.png) 30;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: white;
+}
+
+.AdaptableGrid-poke-name {
+    font-size: 1.5em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+.AdaptableGrid-img-container {
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+img {
+    width: inherit;
+    height: auto;
+}
