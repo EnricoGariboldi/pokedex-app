@@ -2,31 +2,44 @@ import './App.css';
 import React, { useCallback, useEffect, useState } from 'react';
 import AdaptableGrid from './Components/AdaptableGrid/AdaptableGrid'
 import { useAsyncLoader } from './Hooks/useAsyncLoader';
-import {render} from 'react-dom';
 
 function App() {
 
   const [pokemonList, setPokemonList] = useState([])
-  
 
 useEffect(() => {
-fetchPokeRequest()
-
+     fetchPokeRequest()
+  
 
 }, [])
 
 const fetchPokeRequest = async () => {
   const fetchPoke = await fetch('https://pokeapi.co/api/v2/pokemon?limit=5')
    const response = fetchPoke && await fetchPoke.json();
-    let mergeSpecs = []
+  let mergeSpecs = []
+    for (let index = 0; index < response.results.length; index++) {
+  const fetchDetails = await fetch(`${response.results[index].url}`)
+   const resp = fetchDetails && await fetchDetails.json();
+    mergeSpecs.push(resp)
+}
+  setPokemonList(mergeSpecs)
+}
+
+const callGrid = () => {
+
+  console.log(pokemonList )
+return(
+  <AdaptableGrid pokemons={pokemonList}/>
+)
+}
+
+    /*
      for (let index = 0; index < response.results.length; index++) {
     const fetchPokeData = await fetch(`${response.results[index].url}`);
     const specs = fetchPokeData && await fetchPokeData.json();
     mergeSpecs.push(specs)
 }
-  setPokemonList(mergeSpecs)
-}
-
+*/
 
 
 /*
@@ -72,12 +85,21 @@ const fetchPokeRequest = async () => {
   // const delay = ms => new Promise(res => setTimeout(res, ms));
 
 
+  
+const pokeList = [ 
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+]
+
+
+
   return (
     <div className="App">
-      {console.log(pokemonList)}
       <div className='App-title'>Pokemon Database</div>
-       {pokemonList.length? (<AdaptableGrid pokeList={pokemonList}/>) : ("Nessun Pokemon")}
-       {console.log(pokemonList)}
+      {callGrid()}
     </div>
   );
 };
