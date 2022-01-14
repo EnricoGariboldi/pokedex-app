@@ -1,66 +1,74 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import "./AdaptableGrid.css"
-
+import "./AdaptableGrid.css";
+import { useNavigate } from 'react-router-dom';
 
 const AdaptableGrid = (pokemons) => {
 
-/*
-    {console.log(pokemonList)}
-  <Grid container spacing={3}>
-  <div id="insHere">
-    <Grid item xs={12} sm ={4} md={3}>
-    <div className="AdaptableGrid-card-container">
-    <div className="AdaptableGrid-img-container">
-    <img alt='pokemon' src=""/>
-    </div>
-      <div className="AdaptableGrid-poke-name">
-        ...
-        </div>
-      </div>
-    </Grid>
-</div>
-  </Grid>
-  */
-
-const renderGrid = () => {
+  let navigate = useNavigate();
+  let typeArray = [];
+  let abilitiesArray = []
 
   console.log(pokemons)
 
-  
-  for (let index = 0; index < pokemons.pokemons.length; index++) {
-    
-    return(
-      <Grid container spacing={3}>
-      <div id="insHere">
-        <Grid item xs={12} sm ={4} md={3}>
-        <div className="AdaptableGrid-card-container">
-        <div className="AdaptableGrid-img-container">
-        <img alt='pokemon' src={pokemons.pokemons[index].sprites.front_default}/>
-        </div>
-          <div className="AdaptableGrid-poke-name">
-              {pokemons.pokemons[index].name}
-            </div>
-          </div>
-        </Grid>
-    </div>
-      </Grid>
-    )
-    
+  const defineAbilities = (element) => {
+    element.abilities.map( getAbilities => {
+      abilitiesArray.push(getAbilities.ability.name)
+    } )
+    return abilitiesArray
   }
-  
-}
+
+  const defineType = (element) => {
+    element.types.map( getType => {
+      typeArray.push(getType.type.name)
+    } )
+    return typeArray
+  }
 
 
+  return (
+    <div id="adaptGrid" className="AdaptableGrid">
+      <Grid container spacing={3}>
+        {pokemons.pokemons.length
+          ? pokemons.pokemons.map((element) => {
+            
 
-return (
+              return (
+                <Grid item xs={12}  sm={4} md={3} key={element.id}>
 
-  <div id="adaptGrid" className="AdaptableGrid">
-     {renderGrid()} 
-</div>
+                    <div className="AdaptableGrid-card-container"  onClick={ () => {
 
+                      defineType(element)
+                      defineAbilities(element)
 
-)
-}
+                      navigate('/PokemonSpecs', {state: [
+                        element.sprites.front_default,
+                        element.name,
+                        element.height,
+                        element.weight,
+                        typeArray,
+                        abilitiesArray
+                      ] });
+                    }
+                      }>
+                      <div className="AdaptableGrid-img-container">
+                        <img
+                          alt="pokemon"
+                          src={element.sprites.front_default}
+                        />
+                      </div>
+                      <div className="AdaptableGrid-poke-name">
+                        {element.name}
+                      </div>
+                    </div>
+                  
+                </Grid>
+              );
+            })
+          : null}
+      </Grid>
+    </div>
+  );
+};
 
 export default AdaptableGrid;
