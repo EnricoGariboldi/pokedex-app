@@ -2,32 +2,10 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import "./AdaptableGrid.css";
 import { useNavigate } from "react-router-dom";
+import navigateToPokemon from "../../Services/navigateToPokemon";
 
 const AdaptableGrid = (pokemons) => {
   const navigate = useNavigate();
-  let typeArray = [];
-  let abilitiesArray = [];
-  let statsArray = [];
-
-  console.log(pokemons);
-
-  const defineAbilities = (element) => {
-    element.abilities.map((getAbilities) => {
-      return abilitiesArray.push(getAbilities.ability.name);
-    });
-  };
-
-  const defineType = (element) => {
-    element.types.map((getType) => {
-      return typeArray.push(getType.type.name);
-    });
-  };
-
-  const defineStats = (element) => {
-    element.stats.map((getStats) => {
-      return statsArray.push(getStats.base_stat);
-    });
-  };
 
   return (
     <div id="adaptGrid" className="AdaptableGrid">
@@ -41,21 +19,12 @@ const AdaptableGrid = (pokemons) => {
                   <div
                     className="AdaptableGrid-card-container"
                     onClick={() => {
-                      defineType(element);
-                      defineAbilities(element);
-                      defineStats(element);
+                      let navState = null;
+
+                      navState = navigateToPokemon(element);
 
                       navigate("/PokemonSpecs", {
-                        state: 
-                        [
-                          element.sprites.front_default,
-                          element.name,
-                          element.height,
-                          element.weight,
-                          typeArray,
-                          abilitiesArray,
-                          statsArray,
-                        ]
+                        state: navState,
                       });
                     }}
                   >

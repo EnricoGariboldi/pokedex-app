@@ -13,7 +13,7 @@ const PokemonSpecs = () => {
 
 
   const redirect = () => {
-    navigate("/", { image: null });
+    navigate("/", { state: null });
   };
 
   return (
@@ -37,9 +37,9 @@ const PokemonSpecs = () => {
         <Grid item xs={12} sm={6} md={6}>  
           <div className="PokemonSpecs-poke-container">
             <div className="PokemonSpecs-img-container">
-              <img alt="pokemon" src={location.state[0]} />
+              <img alt="pokemon" src={location.state.img} />
             </div>
-            <div className="PokemonSpecs-poke-name">{location.state[1]}</div>
+            <div className="PokemonSpecs-poke-name">{location.state.name}</div>
           </div>
 
       <br></br>
@@ -52,8 +52,8 @@ const PokemonSpecs = () => {
             <div className="PokemonSpecs-specs-data">
               {
                 
-                location.state[6].map( element => {
-                  return <div><LinearProgressWithLabel progress={element} /></div>
+                location.state.stats.map( element => {
+                  return <div><LinearProgressWithLabel progress={element}  /></div>
                 } )
                   }
             </div>
@@ -73,7 +73,7 @@ const PokemonSpecs = () => {
           <div className="PokemonSpecs-specs-title">
             Height:
             </div>
-            <div className="PokemonSpecs-specs-data">{location.state[2]}
+            <div className="PokemonSpecs-specs-data">{location.state.height}
             </div>
             </div>
             
@@ -81,7 +81,7 @@ const PokemonSpecs = () => {
           <div className="PokemonSpecs-specs-title">
             Weight:
             </div>
-            <div className="PokemonSpecs-specs-data">{location.state[3]} 
+            <div className="PokemonSpecs-specs-data">{location.state.weight} 
             </div>
             </div>
 
@@ -91,8 +91,8 @@ const PokemonSpecs = () => {
             </div>
             <div className="PokemonSpecs-specs-data">
               {
-                location.state[4].map( (element) => {
-                  return  <div key={element}>{element}</div>
+                location.state.types.map( (element) => {
+                  return  <div >{element}</div>
                 } )
                   }
             </div>
@@ -104,7 +104,7 @@ const PokemonSpecs = () => {
             </div>
             <div className="PokemonSpecs-specs-data">
               {
-                location.state[5].map( (element) => {
+                location.state.abilities.map( (element) => {
                   return <div>{element}</div>
                 } )
                   }
