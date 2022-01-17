@@ -8,3 +8,59 @@
   margin-bottom: 5%;
 
 }
+
+
+.PokemonSpecs-poke-container { 
+  border: 10px solid transparent;
+  border-image: url(https://isurojit.github.io/pokemondatabase/static/media/border-img.4120e392.png) 30;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: white;
+}
+
+.PokemonSpecs-poke-name {
+
+  font-size: 2.5vw;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bolder;
+}
+
+.PokemonSpecs-img-container {
+  width: 90%;
+  height: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.PokemonSpecs-specs-container {
+  border: 10px solid ;
+  border-radius: 5px;
+  border-image: url(https://isurojit.github.io/pokemondatabase/static/media/border-img.4120e392.png) 30;
+  padding: 1rem;
+  background-color: lightskyblue;
+}
+
+.PokemonSpecs-specs-title {
+  font-size: 5vw;
+  font-weight: bolder;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.PokemonSpecs-specs-data {
+  font-size: 3.5vw;
+  font-weight: bold;
+  color: black;
+}
+
+.PokemonSpecs-specs-section {
+  margin-bottom: 5%;
+}
+
+.PokemonSpecs-specs-bar { 
+  border: 10px solid ;
+  border-image: url(https://isurojit.github.io/pokemondatabase/static/media/border-img.4120e392.png) 30;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: white;
+}

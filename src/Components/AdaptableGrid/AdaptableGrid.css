@@ -10,7 +10,8 @@
     border-radius: 5px;
     padding: 1rem;
     background-color: white;
-    -webkit-transition: -webkit-transform.3s ease-out; 
+    transition: ease-out;
+    -webkit-transition: -webkit-transform.3s; 
 }
 .AdaptableGrid-card-container:hover {
     transform: scale(1.1);
