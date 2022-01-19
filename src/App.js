@@ -4,20 +4,21 @@ import AdaptableGrid from './Components/AdaptableGrid/AdaptableGrid'
 import SearchBar from './Components/SearchBar/SearchBar'
 
 function App() {
-
-  const [pokemonList, setPokemonList] = useState([]);
+  const [initialPokeList, setInitialPokeList] = useState([])
+   const [pokemonList, setPokemonList] = useState([]);
   let filteredPokemons = []
   let search = ''
 
 useEffect(() => {
      fetchPokeRequest()
-
+    
 }, [])
 
 const fetchPokeRequest = async () => {
   const fetchPoke = await fetch('https://pokeapi.co/api/v2/pokemon?limit=500')
    const response = fetchPoke && await fetchPoke.json();
-   setPokemonList(response)
+   setInitialPokeList(response.results)
+  
 }
 
 const handleChange = (e) => {
@@ -28,17 +29,18 @@ search = e.target.value
 
 const filterPokemons = (search) => {
 
- filteredPokemons = pokemonList.results.filter(pokemon => pokemon.name.toLowerCase().includes(search.toLowerCase()));
-  // prendo correttamente la lista dei pokemon filtrati
+ filteredPokemons = initialPokeList.filter(pokemon => pokemon.name.toLowerCase().includes(search.toLowerCase()));
+setPokemonList(filteredPokemons)
 }
 
   return (
     <div className="App">
-      {console.log(pokemonList)}
       
       <div className='App-title'>Pokemon Database</div>
-      <SearchBar handleChange={handleChange}/>
-      <AdaptableGrid pokemons={pokemonList} searchValue={search}/>
+      <SearchBar handleChange={handleChange} />
+
+      {pokemonList.length ? (<AdaptableGrid pokemons={pokemonList} />) : (<AdaptableGrid pokemons={initialPokeList} />)}
+      
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import "./SearchBar.css";
 
-const SearchBar = ({handleChange, searchValue}) => {
+const SearchBar = ({handleChange}) => {
 
 
 
@@ -12,7 +12,7 @@ const SearchBar = ({handleChange, searchValue}) => {
         type='search' 
         placeholder="Search Pokemons..."
         onChange={handleChange}
-        value = {searchValue}
+        
     />
 
 
