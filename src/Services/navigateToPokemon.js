@@ -1,28 +1,50 @@
 
+
+
+
 const navigateToPokemon = (element) => {
   let typeArray = [];
   let abilitiesArray = [];
   let statsArray = [];
 
-  const defineAbilities = () => {
-    element.abilities.map((getAbilities) => {
+
+
+  const fetchDetails = async () => {
+
+  const fetchDetails = await fetch(`${element.url}`)
+   const resp = fetchDetails && await fetchDetails.json();
+
+   defineAbilities(resp);
+   defineType(resp);
+   defineStats(resp);
+
+   return resp
+}
+
+  const defineAbilities = (resp) => {
+    resp.abilities.map((getAbilities) => {
       return abilitiesArray.push(getAbilities.ability.name);
     });
   };
 
-  const defineType = () => {
-    element.types.map((getType) => {
+  const defineType = (resp) => {
+    resp.types.map((getType) => {
       return typeArray.push(getType.type.name);
     });
   };
 
-  const defineStats = () => {
-    element.stats.map((getStats) => {
+  
+  const defineStats = (resp) => {
+    resp.stats.map((getStats) => {
       return statsArray.push(getStats.base_stat);
     });
   };
 
-  const defineState = () => {
+  
+
+  const defineState = async () => {
+    let resp = {}
+
     const navState = {
          img: null,
          name: null,
@@ -32,22 +54,22 @@ const navigateToPokemon = (element) => {
          abilities: [],
          stats: []
     };
-    defineAbilities();
-    defineType();
-    defineStats();
+   resp = await fetchDetails();
+  
 
-    navState.img = element.sprites.front_default
-    navState.name = element.name
-    navState.height = element.height
-    navState.weight = element.weight
+    navState.img = resp.sprites.front_default
+    navState.name = resp.name
+    navState.height = resp.height
+    navState.weight = resp.weight
     navState.types = typeArray
     navState.abilities = abilitiesArray
     navState.stats = statsArray
-
-    console.log(navState)
     
     return navState
+
+    
   };
+
 
 return defineState()
 

@@ -1,37 +1,37 @@
 .AdaptableGrid {
-    display: block;
-    
+  display: block;
 }
 
 .AdaptableGrid-card-container {
-    cursor: url(https://emoji.gg/assets/emoji/2355_ultra_ball_pokemon.png),auto;
-    border: 10px solid transparent;
-    border-image: url(https://isurojit.github.io/pokemondatabase/static/media/border-img.4120e392.png) 30;
-    border-radius: 5px;
-    padding: 1rem;
-    background-color: white;
-    transition: ease-out;
-    -webkit-transition: -webkit-transform.3s; 
+  cursor: url(https://emoji.gg/assets/emoji/2355_ultra_ball_pokemon.png), auto;
+  border: 10px solid transparent;
+  border-image: url(https://isurojit.github.io/pokemondatabase/static/media/border-img.4120e392.png)
+    30;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: white;
+  transition: ease-out;
+  -webkit-transition: -webkit-transform.3s;
+  object-fit: contain;
 }
 .AdaptableGrid-card-container:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .AdaptableGrid-poke-name {
-
-    font-size: 2.5vw;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bolder;
+  font-size: 2.5vw;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bolder;
 }
 
 .AdaptableGrid-img-container {
-    width: 90%;
-    height: auto;
-    margin-left: 5%;
-    margin-right: 5%;
+  width: 10vw;
+  height: 10vw;
+  margin: auto;
 }
 
 img {
-    width: inherit;
-    height: auto;
+  width: inherit;
+  height: inherit;
 }

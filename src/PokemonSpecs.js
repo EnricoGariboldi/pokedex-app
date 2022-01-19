@@ -18,7 +18,7 @@ const PokemonSpecs = () => {
 
   return (
     <div className="PokemonSpecs">
-      {console.log(location.state)}
+      
 
       <div className="PokemonSpecs-backToPokedex">
         <Stack direction="row" justifyContent="center">
@@ -55,6 +55,7 @@ const PokemonSpecs = () => {
                 location.state.stats.map( element => {
                   return <div><LinearProgressWithLabel progress={element}  /></div>
                 } )
+                
                   }
             </div>
 
@@ -81,7 +82,7 @@ const PokemonSpecs = () => {
           <div className="PokemonSpecs-specs-title">
             Weight:
             </div>
-            <div className="PokemonSpecs-specs-data">{location.state.weight} 
+            <div className="PokemonSpecs-specs-data">{location.state.weight}
             </div>
             </div>
 
@@ -94,7 +95,7 @@ const PokemonSpecs = () => {
                 location.state.types.map( (element) => {
                   return  <div >{element}</div>
                 } )
-                  }
+              } 
             </div>
             </div>
 
@@ -107,7 +108,7 @@ const PokemonSpecs = () => {
                 location.state.abilities.map( (element) => {
                   return <div>{element}</div>
                 } )
-                  }
+               }
             </div>
             </div>
             </div>
