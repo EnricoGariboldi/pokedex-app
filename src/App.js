@@ -7,7 +7,8 @@ function App() {
   const [initialPokeList, setInitialPokeList] = useState([])
    const [pokemonList, setPokemonList] = useState([]);
   let filteredPokemons = []
-  let search = ''
+  const [search, setSearch] = useState('')
+  // let search = ''
 
 useEffect(() => {
      fetchPokeRequest()
@@ -22,25 +23,32 @@ const fetchPokeRequest = async () => {
 }
 
 const handleChange = (e) => {
-search = e.target.value
-  filterPokemons(search)
+  setSearch(e.target.value)
+// search = e.target.value
+  filterPokemons()
   
 }
 
-const filterPokemons = (search) => {
+const filterPokemons = () => {
 
  filteredPokemons = initialPokeList.filter(pokemon => pokemon.name.toLowerCase().includes(search.toLowerCase()));
 setPokemonList(filteredPokemons)
 }
 
+const renderFilter = () => {
+
+  if(search === '') {
+    return <AdaptableGrid pokemons={initialPokeList}/>
+  } else {
+    return <AdaptableGrid pokemons={pokemonList} />
+  }
+}
+
   return (
     <div className="App">
-      
       <div className='App-title'>Pokemon Database</div>
       <SearchBar handleChange={handleChange} />
-
-      {pokemonList.length ? (<AdaptableGrid pokemons={pokemonList} />) : (<AdaptableGrid pokemons={initialPokeList} />)}
-      
+      {renderFilter()}
     </div>
   );
 };
