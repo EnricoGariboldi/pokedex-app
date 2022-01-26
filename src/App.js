@@ -23,16 +23,11 @@ const fetchPokeRequest = async () => {
 }
 
 const handleChange = (e) => {
-  setSearch(e.target.value)
-// search = e.target.value
-  filterPokemons()
-  
-}
-
-const filterPokemons = () => {
-
- filteredPokemons = initialPokeList.filter(pokemon => pokemon.name.toLowerCase().includes(search.toLowerCase()));
+setSearch(e.target.value);
+filteredPokemons = initialPokeList.filter(pokemon => pokemon.name.toLowerCase().includes(e.target.value.toLowerCase()));
 setPokemonList(filteredPokemons)
+
+  
 }
 
 const renderFilter = () => {

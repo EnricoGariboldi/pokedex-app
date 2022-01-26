@@ -7,15 +7,13 @@ import navigateToPokemon from "../../Services/navigateToPokemon";
 const AdaptableGrid = (pokemons) => {
   const navigate = useNavigate();
 
-  console.log(pokemons)
-
   return (
     <div id="adaptGrid" className="AdaptableGrid">
       <Grid container spacing={3}>
         {pokemons.pokemons
           ? pokemons.pokemons.map((element) => {
               return (
-                <Grid item xs={12} sm={4} md={3} key={element.id}>
+                <Grid item xs={12} sm={4} md={3} key={element.name}>
                   <div
                     className="AdaptableGrid-card-container"
                     onClick={async () => {
