@@ -26,7 +26,9 @@ const PokemonSpecs = () => {
             variant="contained"
             onClick={redirect}
           >
+            <div className="PokemonSpecs-button-text">
             Return to Pokedex
+            </div>
           </Button>
         </Stack>
       </div>

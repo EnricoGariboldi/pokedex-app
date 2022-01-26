@@ -67,3 +67,7 @@
   padding: 1rem;
   background-color: white;
 }
+
+.PokemonSpecs-button-text{
+  font-size: 2vw;
+}
