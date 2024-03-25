@@ -10,8 +10,6 @@ const PokemonSpecs = () => {
   let navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
-
   const redirect = () => {
     navigate("/", { state: null });
   };
@@ -25,6 +23,7 @@ const PokemonSpecs = () => {
             size="large"
             variant="contained"
             onClick={redirect}
+            data-test="back-to-home"
           >
             <div className="PokemonSpecs-button-text">
             Return to Pokedex

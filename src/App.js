@@ -8,11 +8,9 @@ function App() {
    const [pokemonList, setPokemonList] = useState([]);
   let filteredPokemons = []
   const [search, setSearch] = useState('')
-  // let search = ''
 
 useEffect(() => {
      fetchPokeRequest()
-    
 }, [])
 
 const fetchPokeRequest = async () => {

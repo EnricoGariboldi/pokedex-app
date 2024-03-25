@@ -12,7 +12,7 @@ const SearchBar = ({handleChange}) => {
         type='search' 
         placeholder="Search Pokemons..."
         onChange={handleChange}
-        
+        data-test="search-bar"
     />
 
 
