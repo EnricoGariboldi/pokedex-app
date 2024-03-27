@@ -89,9 +89,9 @@ const PokemonSpecs = () => {
 
             <div className="PokemonSpecs-specs-section">
               <div className="PokemonSpecs-specs-title">Abilities:</div>
-              <div className="PokemonSpecs-specs-data">
+              <div className="PokemonSpecs-specs-data" data-test="specs">
                 {location.state.abilities.map((element) => {
-                  return <div>{element}</div>;
+                  return <div data-test={element}>{element}</div>;
                 })}
               </div>
             </div>

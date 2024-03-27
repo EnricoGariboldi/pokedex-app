@@ -10,11 +10,6 @@ describe('Lista test', () => {
   cy.contains('bulbasaur').click();
   })
 
-  it('Checking random name', () => {
-
-    cy.contains('raitu').click();
-    })
-
 
     it('Search pikachu and visit its page, then go back to homepage', () => {
       cy.getByExactMatch('search-bar').type('pikachu')
@@ -24,26 +19,16 @@ describe('Lista test', () => {
       cy.getByExactMatch('back-to-home').click()
       })
 
+      it('Checking random name', () => {
+        cy.contains('raitu').click();
+        })
+
+        it('Search for magikarp, if it exists open his page, and then check if has splash as ability', () => {
+          cy.getByExactMatch('search-bar').type('magikarp')
+          cy.getByExactMatch('search-bar').should('not.have.value','')
+          cy.contains('magikarp').click();
+          cy.url().should('include', '/PokemonSpecs')
+          cy.getByExactMatch('specs').contains('splash')
+          })
 })
-
-
-/*
-  context("Categoria 1 test", () => {
-
-      it('clicking "type" navigates to a new url', () => {
-    cy.contains('type').click()
-    cy.url().should('include', '/commands/actions')
-
-    cy.get('.action-email').type('fake@email.com')
-
-    cy.get('.action-email').should('have.value', 'fake@email.com')
-  })
-
-  it('Test due', () => {
-
-    cy.contains('prova').click()
-  
-  })
-  })
-*/
 })
